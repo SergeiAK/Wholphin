@@ -37,6 +37,10 @@ jobs:
           fetch-depth: 0
       - name: Setup
         uses: ./.github/actions/setup
+      - name: Use a stable debug keystore
+        run: |
+          mkdir -p ~/.android
+          cp .ci/debug.keystore ~/.android/debug.keystore
       - name: Build app
         run: ./gradlew clean assembleDefaultDebug testDefaultDebugUnitTest --no-daemon
       - name: Upload APK
