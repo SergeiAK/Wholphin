@@ -187,12 +187,19 @@ fun BannerCard(
                     modifier =
                         Modifier
                             .align(Alignment.BottomStart)
-                            .background(
-                                MaterialTheme.colorScheme.tertiary,
-                            ).clip(RectangleShape)
+                            .fillMaxWidth()
                             .height(Cards.playedPercentHeight)
-                            .fillMaxWidth((playPercent / 100).toFloat()),
-                )
+                            .background(AppColors.TransparentBlack75),
+                ) {
+                    Box(
+                        modifier =
+                            Modifier
+                                .background(MaterialTheme.colorScheme.tertiary)
+                                .clip(RectangleShape)
+                                .height(Cards.playedPercentHeight)
+                                .fillMaxWidth((playPercent / 100).toFloat()),
+                    )
+                }
             }
         }
     }

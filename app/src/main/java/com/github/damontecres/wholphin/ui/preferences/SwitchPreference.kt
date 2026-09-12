@@ -81,11 +81,20 @@ fun SwitchColors(): SwitchColors {
         AppThemeColors.OLED_BLACK,
         AppThemeColors.RED,
         AppThemeColors.BROWN,
-        AppThemeColors.AMBER_BLACK,
         -> {
             SwitchDefaults.colors(
                 checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
                 uncheckedThumbColor = MaterialTheme.colorScheme.onPrimary,
+            )
+        }
+
+        AppThemeColors.AMBER_BLACK -> {
+            SwitchDefaults.colors(
+                checkedThumbColor = MaterialTheme.colorScheme.onTertiary,
+                checkedTrackColor = MaterialTheme.colorScheme.tertiary,
+                uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+                uncheckedBorderColor = MaterialTheme.colorScheme.outline,
             )
         }
     }

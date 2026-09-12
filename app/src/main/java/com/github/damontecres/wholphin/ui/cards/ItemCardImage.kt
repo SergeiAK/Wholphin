@@ -270,12 +270,19 @@ fun ItemCardImageOverlay(
                 modifier =
                     Modifier
                         .align(Alignment.BottomStart)
-                        .background(
-                            MaterialTheme.colorScheme.tertiary,
-                        ).clip(RectangleShape)
+                        .fillMaxWidth()
                         .height(Cards.playedPercentHeight)
-                        .fillMaxWidth((watchedPercent / 100.0).toFloat()),
-            )
+                        .background(AppColors.TransparentBlack75),
+            ) {
+                Box(
+                    modifier =
+                        Modifier
+                            .background(MaterialTheme.colorScheme.tertiary)
+                            .clip(RectangleShape)
+                            .height(Cards.playedPercentHeight)
+                            .fillMaxWidth((watchedPercent / 100.0).toFloat()),
+                )
+            }
         }
     }
 }
