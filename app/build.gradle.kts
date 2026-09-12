@@ -81,6 +81,15 @@ configure<ApplicationExtension> {
     }
 
     signingConfigs {
+        val stableDebugKeystore = rootProject.file(".ci/debug.keystore")
+        if (stableDebugKeystore.exists()) {
+            create("stableDebug") {
+                storeFile = stableDebugKeystore
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+            }
+        }
         if (shouldSign.get()) {
             create("ci") {
                 file("ci.keystore").writeBytes(
@@ -127,6 +136,7 @@ configure<ApplicationExtension> {
             isShrinkResources = false
             isDebuggable = true
             applicationIdSuffix = ".debug"
+            signingConfigs.findByName("stableDebug")?.let { signingConfig = it }
         }
     }
     flavorDimensions += "version"
