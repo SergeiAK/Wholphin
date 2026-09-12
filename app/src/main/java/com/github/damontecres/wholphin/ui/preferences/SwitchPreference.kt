@@ -94,7 +94,7 @@ fun SwitchColors(): SwitchColors {
                 checkedTrackColor = MaterialTheme.colorScheme.tertiary,
                 uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-                uncheckedBorderColor = MaterialTheme.colorScheme.outline,
+                uncheckedBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
