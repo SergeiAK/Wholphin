@@ -203,7 +203,7 @@ private fun SeekBarDisplay(
     enabled: Boolean = true,
 ) {
     val color =
-        if (LocalTheme.current == AppThemeColors.AMBER_BLACK) {
+        if (LocalTheme.current == AppThemeColors.SIGNAL) {
             MaterialTheme.colorScheme.tertiary
         } else {
             MaterialTheme.colorScheme.border

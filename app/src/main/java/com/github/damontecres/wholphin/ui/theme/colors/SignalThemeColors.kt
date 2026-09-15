@@ -6,7 +6,7 @@ import androidx.tv.material3.darkColorScheme
 import androidx.tv.material3.lightColorScheme
 import com.github.damontecres.wholphin.ui.theme.ThemeColors
 
-val AmberBlackThemeColors =
+val SignalThemeColors =
     object : ThemeColors {
         val primaryLight = Color(0xFF8A5100)
         val onPrimaryLight = Color(0xFFFFFFFF)
@@ -37,7 +37,7 @@ val AmberBlackThemeColors =
         val inverseOnSurfaceLight = Color(0xFFFCEEE2)
         val inversePrimaryLight = Color(0xFFFFA94D)
 
-        // Dark scheme: near-black neutrals, amber accent, Jellyfin green for progress.
+        // Dark scheme: black neutrals, orange for attention, green for state.
         val amber = Color(0xFFFF9F2E)
         val amberDeep = Color(0xFFB35C00)
         val amberLight = Color(0xFFFFD977)

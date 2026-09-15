@@ -88,7 +88,7 @@ fun SwitchColors(): SwitchColors {
             )
         }
 
-        AppThemeColors.AMBER_BLACK -> {
+        AppThemeColors.SIGNAL -> {
             // Only the track changes with the state: the thumb and the outline stay put,
             // so the control reads as one switch rather than two different widgets.
             SwitchDefaults.colors(

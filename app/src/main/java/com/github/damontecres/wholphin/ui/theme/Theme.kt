@@ -5,7 +5,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.tv.material3.MaterialTheme
 import com.github.damontecres.wholphin.preferences.AppThemeColors
-import com.github.damontecres.wholphin.ui.theme.colors.AmberBlackThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.BlueThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.BoldBlueThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.BrownThemeColors
@@ -14,6 +13,7 @@ import com.github.damontecres.wholphin.ui.theme.colors.OledThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.OrangeThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.PurpleThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.RedThemeColors
+import com.github.damontecres.wholphin.ui.theme.colors.SignalThemeColors
 
 val LocalTheme =
     compositionLocalOf<AppThemeColors> { AppThemeColors.PURPLE }
@@ -28,7 +28,7 @@ fun getThemeColors(appThemeColors: AppThemeColors): ThemeColors =
         AppThemeColors.BOLD_BLUE -> BoldBlueThemeColors
         AppThemeColors.RED -> RedThemeColors
         AppThemeColors.BROWN -> BrownThemeColors
-        AppThemeColors.AMBER_BLACK -> AmberBlackThemeColors
+        AppThemeColors.SIGNAL -> SignalThemeColors
         AppThemeColors.UNRECOGNIZED -> PurpleThemeColors
     }
 

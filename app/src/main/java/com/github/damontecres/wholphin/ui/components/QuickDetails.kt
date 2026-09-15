@@ -52,7 +52,7 @@ fun QuickDetails(
         if (details != null) {
             QuickDetailsText(details.basic, Modifier, textStyle, inlineContentMap)
             if (DisplayToggle.OFFICIAL_RATING in enabled) {
-                if (LocalTheme.current == AppThemeColors.AMBER_BLACK) {
+                if (LocalTheme.current == AppThemeColors.SIGNAL) {
                     OfficialRatingBadge(details.officialRating?.text, textStyle)
                 } else {
                     QuickDetailsText(details.officialRating, Modifier, textStyle, inlineContentMap)

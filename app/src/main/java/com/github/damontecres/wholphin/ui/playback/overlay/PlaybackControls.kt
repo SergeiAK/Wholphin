@@ -303,7 +303,7 @@ fun SeekTimecodes(
             val remainingText =
                 remember(remainingSec) { "-${resources.formatDuration(remainingSec.seconds)}" }
             val timeColor =
-                if (LocalTheme.current == AppThemeColors.AMBER_BLACK) {
+                if (LocalTheme.current == AppThemeColors.SIGNAL) {
                     MaterialTheme.colorScheme.primary
                 } else {
                     MaterialTheme.colorScheme.onSurface
@@ -475,11 +475,11 @@ fun PlaybackButton(
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource? = null,
 ) {
-    val amberBlack = LocalTheme.current == AppThemeColors.AMBER_BLACK
+    val signal = LocalTheme.current == AppThemeColors.SIGNAL
     // The accent already carries focus everywhere else; next to the green progress bar
     // an amber pause button is one colour too many, so focus here is plain white.
     val selectedColor =
-        if (amberBlack) {
+        if (signal) {
             MaterialTheme.colorScheme.onSurface
         } else {
             MaterialTheme.colorScheme.border
@@ -493,7 +493,7 @@ fun PlaybackButton(
                 containerColor = AppColors.TransparentBlack25,
                 focusedContainerColor = selectedColor,
                 focusedContentColor =
-                    if (amberBlack) {
+                    if (signal) {
                         MaterialTheme.colorScheme.surface
                     } else {
                         MaterialTheme.colorScheme.onSurface
@@ -511,7 +511,7 @@ fun PlaybackButton(
             painter = painterResource(iconRes),
             contentDescription = "",
             tint =
-                if (LocalTheme.current == AppThemeColors.OLED_BLACK || amberBlack) {
+                if (LocalTheme.current == AppThemeColors.OLED_BLACK || signal) {
                     LocalContentColor.current
                 } else {
                     MaterialTheme.colorScheme.onSurface
@@ -530,11 +530,11 @@ fun PlaybackFaButton(
     interactionSource: MutableInteractionSource? = null,
     textColor: Color = Color.Unspecified,
 ) {
-    val amberBlack = LocalTheme.current == AppThemeColors.AMBER_BLACK
+    val signal = LocalTheme.current == AppThemeColors.SIGNAL
     // The accent already carries focus everywhere else; next to the green progress bar
     // an amber pause button is one colour too many, so focus here is plain white.
     val selectedColor =
-        if (amberBlack) {
+        if (signal) {
             MaterialTheme.colorScheme.onSurface
         } else {
             MaterialTheme.colorScheme.border
@@ -548,7 +548,7 @@ fun PlaybackFaButton(
                 containerColor = AppColors.TransparentBlack25,
                 focusedContainerColor = selectedColor,
                 focusedContentColor =
-                    if (amberBlack) {
+                    if (signal) {
                         MaterialTheme.colorScheme.surface
                     } else {
                         MaterialTheme.colorScheme.onSurface
@@ -569,7 +569,7 @@ fun PlaybackFaButton(
             color =
                 if (textColor.isSpecified) {
                     textColor
-                } else if (LocalTheme.current == AppThemeColors.OLED_BLACK || amberBlack) {
+                } else if (LocalTheme.current == AppThemeColors.OLED_BLACK || signal) {
                     LocalContentColor.current
                 } else {
                     MaterialTheme.colorScheme.onSurface

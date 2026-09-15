@@ -172,14 +172,14 @@ fun StreamLabel(
     count: Int = 0,
     disabled: Boolean = false,
 ) {
-    val amberBlack = LocalTheme.current == AppThemeColors.AMBER_BLACK
+    val signal = LocalTheme.current == AppThemeColors.SIGNAL
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(2.dp),
         modifier =
             modifier
                 .background(
-                    if (amberBlack) {
+                    if (signal) {
                         MaterialTheme.colorScheme.surfaceVariant
                     } else {
                         MaterialTheme.colorScheme.secondaryContainer.copy(alpha = .5f)
@@ -190,7 +190,7 @@ fun StreamLabel(
         ProvideTextStyle(
             TextStyle(
                 color =
-                    if (amberBlack) {
+                    if (signal) {
                         MaterialTheme.colorScheme.primary
                     } else {
                         MaterialTheme.colorScheme.onSurface
