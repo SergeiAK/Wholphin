@@ -1,0 +1,37 @@
+name: Debug APK
+
+on:
+  push:
+    branches:
+      - build/alphabet-present-letters
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs='-Xmx12g -XX:MaxMetaspaceSize=1024m'"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0 # Need the tags to build
+      - name: Use the committed debug keystore
+        run: |
+          mkdir -p ~/.android
+          cp .ci/debug.keystore ~/.android/debug.keystore
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Build app
+        run: ./gradlew assembleDefaultDebug --no-daemon
+      - name: Upload APK
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: wholphin-debug-apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
