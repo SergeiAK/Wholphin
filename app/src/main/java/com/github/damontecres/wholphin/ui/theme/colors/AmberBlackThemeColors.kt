@@ -38,7 +38,7 @@ val AmberBlackThemeColors =
         val inversePrimaryLight = Color(0xFFFFA94D)
 
         // Dark scheme: near-black neutrals, amber accent, Jellyfin green for progress.
-        val amber = Color(0xFFFFA94D)
+        val amber = Color(0xFFFF9F2E)
         val amberDeep = Color(0xFFB35C00)
         val amberLight = Color(0xFFFFD977)
         val statusGreen = Color(0xFF52B54B)
@@ -60,9 +60,9 @@ val AmberBlackThemeColors =
         val onErrorDark = Color(0xFF690005)
         val errorContainerDark = Color(0xFF93000A)
         val onErrorContainerDark = Color(0xFFFFDAD6)
-        val backgroundDark = Color(0xFF0D0D0D)
+        val backgroundDark = Color(0xFF000000)
         val onBackgroundDark = Color(0xFFECECEC)
-        val surfaceDark = Color(0xFF101010)
+        val surfaceDark = Color(0xFF000000)
         val onSurfaceDark = Color(0xFFECECEC)
         val surfaceVariantDark = chipGrey
         val onSurfaceVariantDark = Color(0xFFC7C7C7)
@@ -70,16 +70,16 @@ val AmberBlackThemeColors =
         val outlineVariantDark = Color(0xFF4A4A4A)
         val scrimDark = Color(0xFF000000)
         val inverseSurfaceDark = Color(0xFFECECEC)
-        val inverseOnSurfaceDark = Color(0xFF101010)
+        val inverseOnSurfaceDark = Color(0xFF000000)
         val inversePrimaryDark = amberDeep
-        val surfaceTintDark = Color(0xFFEDEDED)
-        val surfaceContainerLowestDark = Color(0xFF080808)
-        val surfaceContainerLowDark = Color(0xFF141414)
-        val surfaceContainerDark = Color(0xFF1A1A1A)
-        val surfaceContainerHighDark = Color(0xFF242424)
-        val surfaceContainerHighestDark = Color(0xFF2E2E2E)
-        val surfaceDimDark = Color(0xFF0D0D0D)
-        val surfaceBrightDark = Color(0xFF363636)
+        val surfaceTintDark = Color(0xFF9A9A9A)
+        val surfaceContainerLowestDark = Color(0xFF000000)
+        val surfaceContainerLowDark = Color(0xFF0A0A0A)
+        val surfaceContainerDark = Color(0xFF121212)
+        val surfaceContainerHighDark = Color(0xFF1A1A1A)
+        val surfaceContainerHighestDark = Color(0xFF242424)
+        val surfaceDimDark = Color(0xFF000000)
+        val surfaceBrightDark = Color(0xFF2A2A2A)
 
         override val lightSchemeMaterial: ColorScheme =
             androidx.compose.material3.lightColorScheme(

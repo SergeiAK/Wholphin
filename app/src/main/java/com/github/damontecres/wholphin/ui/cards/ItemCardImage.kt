@@ -266,23 +266,10 @@ fun ItemCardImageOverlay(
         }
 
         if (watchedPercent != null && watchedPercent > 0 && watchedPercent < 100) {
-            Box(
-                modifier =
-                    Modifier
-                        .align(Alignment.BottomStart)
-                        .fillMaxWidth()
-                        .height(Cards.playedPercentHeight)
-                        .background(AppColors.TransparentBlack75),
-            ) {
-                Box(
-                    modifier =
-                        Modifier
-                            .background(MaterialTheme.colorScheme.tertiary)
-                            .clip(RectangleShape)
-                            .height(Cards.playedPercentHeight)
-                            .fillMaxWidth((watchedPercent / 100.0).toFloat()),
-                )
-            }
+            PlayedPercentBar(
+                percent = watchedPercent,
+                modifier = Modifier.align(Alignment.BottomStart),
+            )
         }
     }
 }
