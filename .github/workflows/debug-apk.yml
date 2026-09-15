@@ -12,6 +12,8 @@ defaults:
 
 env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs='-Xmx12g -XX:MaxMetaspaceSize=1024m'"
+  BUILD_TOOLS_VERSION: "36.0.0"
+  NDK_VERSION: "29.0.14206865"
 
 jobs:
   build:
@@ -27,8 +29,7 @@ jobs:
           cp .ci/debug.keystore ~/.android/debug.keystore
       - name: Pre-accept Android SDK licenses
         # cmdline-tools 20.0 walks the licences interactively, so `sdkmanager --licenses`
-        # inside the setup action dies on an empty stdin. Writing the hashes it looks for
-        # leaves it nothing to ask about.
+        # dies on an empty stdin. Writing the hashes it looks for leaves it nothing to ask.
         run: |
           sdk_root="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
           mkdir -p "$sdk_root/licenses"
@@ -42,9 +43,26 @@ jobs:
           printf '%s\n' 33b6a2b64607f11b759f320ef9dff4ae5c47d97a > google-gdk-license
           printf '%s\n' e9acab5b5fbb560a72cfaecce8946896ff6aab9d > mips-android-sysimage-license
           printf '%s\n' d975f751698a77b662f1254ddbeed3901e976f5a > intel-android-extra-license
-          ls -l
-      - name: Setup
-        uses: ./.github/actions/setup
+      # Deliberately not ./.github/actions/setup: that one asks for the retired `tools`
+      # package, which sdkmanager can no longer find. Same steps, minus that package.
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.14'
+      - name: Setup JDK
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: zulu
+          java-version: '21'
+          cache: 'gradle'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 # v4
+        with:
+          packages: "platform-tools build-tools;${{ env.BUILD_TOOLS_VERSION }} ndk;${{ env.NDK_VERSION }}"
+      - name: Add NDK to path
+        run: |
+          ndk_root="${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}"
+          echo "$ndk_root:$ndk_root/toolchains/llvm/prebuilt/linux-x86_64/bin" >> $GITHUB_PATH
       - name: Build app
         run: ./gradlew assembleDefaultDebug --no-daemon
       - name: Upload APK
