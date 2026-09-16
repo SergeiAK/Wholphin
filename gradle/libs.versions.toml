@@ -25,6 +25,10 @@ tvMaterial = "1.1.0-alpha01"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
 androidx-media3 = "1.11.0"
+# Dolby Vision profile 7 -> 8.1 RPU rewrite (libdovi behind JNI), MIT. 0.4.x is built against
+# compileSdk 37 and its AAR metadata refuses a 36 consumer; the classes used here (LibDovi) and the
+# native library are the same in 0.3.0. Move to 0.4.1 once compileSdk is 37.
+exoplayerhdrutils = "0.3.0"
 coil = "3.5.0"
 jellyfin-sdk = "1.7.1"
 nav3Core = "1.1.3"
@@ -111,6 +115,7 @@ androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-da
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3" }
 androidx-media3-ui-compose = { module = "androidx.media3:media3-ui-compose", version.ref = "androidx-media3" }
 androidx-media3-effect = { group = "androidx.media3", name = "media3-effect", version.ref = "androidx-media3" }
+exoplayerhdrutils = { module = "com.suyashbelekar:exoplayerhdrutils", version.ref = "exoplayerhdrutils" }
 
 coil-core = { module = "io.coil-kt.coil3:coil-core", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }

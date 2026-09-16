@@ -5,6 +5,7 @@ import com.github.damontecres.wholphin.preferences.AppPreferences
 import com.github.damontecres.wholphin.preferences.AssPlaybackMode
 import com.github.damontecres.wholphin.preferences.ExperimentalPreferences
 import com.github.damontecres.wholphin.preferences.PlaybackOverrides
+import com.github.damontecres.wholphin.util.DolbyVisionProfile7Conversion
 import com.github.damontecres.wholphin.util.WholphinDispatchers
 import com.github.damontecres.wholphin.util.profile.MediaCodecCapabilitiesTest
 import com.github.damontecres.wholphin.util.profile.createDeviceProfile
@@ -60,7 +61,13 @@ class DeviceProfileService
                                 downMixAudio = newConfig.overrides.downmixStereo,
                                 assDirectPlay = newConfig.overrides.assPlaybackMode != AssPlaybackMode.ASS_TRANSCODE,
                                 pgsDirectPlay = newConfig.overrides.directPlayPgs,
-                                dolbyVisionELDirectPlay = newConfig.overrides.directPlayDolbyVisionEL,
+                                // A profile 7 track the player converts to 8.1 is one the server need not transcode
+                                dolbyVisionELDirectPlay =
+                                    newConfig.overrides.directPlayDolbyVisionEL ||
+                                        DolbyVisionProfile7Conversion.isWanted(
+                                            newConfig.experimental,
+                                            mediaCodecCapabilitiesTest,
+                                        ),
                                 decodeAv1 = prefs.overrides.decodeAv1,
                                 preferAc3ForSurround = appPrefs.experimentalPreferences.preferAc3Surround,
                                 jellyfinTenEleven = newConfig.jellyfinTenEleven,
